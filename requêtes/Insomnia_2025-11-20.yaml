@@ -1,0 +1,411 @@
+type: collection.insomnia.rest/5.0
+name: TP-API-Spotify
+meta:
+  id: wrk_92fc2c0df02a4829a164ba1f29080e16
+  created: 1763626486971
+  modified: 1763635394124
+  description: ""
+collection:
+  - url: https://accounts.spotify.com/api/token
+    name: "Token "
+    meta:
+      id: req_1f737133002a4ddeb996294a5b83072e
+      created: 1763626501888
+      modified: 1763627655913
+      isPrivate: false
+      description: ""
+      sortKey: -1763627432281
+    method: POST
+    parameters:
+      - id: pair_052c43d8d2324a6bbc40631a174cf3ca
+        name: client_secret
+        value: 6ad26881c3bb4a01a83da348a3714030
+        description: ""
+        disabled: false
+      - id: pair_0342ca9d6c924bc9a36f42cbd0a9f34d
+        name: client_id
+        value: 4ba3c025599744ef9bc882e88bf3b5cc
+        description: ""
+        disabled: false
+      - id: pair_3bdea84a0f5d41c58c869ea23c170910
+        name: grant_type
+        value: client_credentials
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_00cfaad8237c4cce8984641e9b04f8c3
+      - id: pair_29b80f29b47b4ff286b64740d5f48bbf
+        name: Content-Type
+        value: application/x-www-form-urlencoded
+        description: ""
+        disabled: false
+      - id: pair_d9eccf0d2fd94949976466597f94d2cb
+        name: grant_type
+        value: client_credentials
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/artists/2UwqpfQtNuhBwviIC0f2ie
+    name: "Récup l'artiste Damso  "
+    meta:
+      id: req_c983618c27e14c37b5df8146e42bd8f7
+      created: 1763627432181
+      modified: 1763629162989
+      isPrivate: false
+      description: ""
+      sortKey: -1763627432181
+    method: GET
+    parameters:
+      - id: pair_4ce60a28715a434e89c8ef2ec7fe5286
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_6133b1f296cc4b6eb66345497e30578f
+        disabled: true
+      - id: pair_ba961822415e42098a0c14faeb136275
+        name: Authorization
+        value: Bearer
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/artists/2UwqpfQtNuhBwviIC0f2ie/albums
+    name: Récup les Albums Damso
+    meta:
+      id: req_c82f09451bd24b4bbafc394053492d8c
+      created: 1763628693589
+      modified: 1763629722738
+      isPrivate: false
+      description: ""
+      sortKey: -1763627432081
+    method: GET
+    parameters:
+      - id: pair_24ad3d28dbae42b5915c13dcad3590bf
+        name: " "
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_ee8caab19e03460bac90f1ceae6eb587
+      - id: pair_57394ebd7820476a88875d720cd6f70d
+        name: Authorization
+        value: Bearer
+          BQAotB5LORb_nG-RZkfGvxI6jhvt82d4tqzqlNucw7HNvYzu0n6zpuKvP7NnGXqV8Idmdh0I0SMttvexbzdJHra8qdXah6_cMsVaDBjS_gUMvYqh3NZk0OYlubFZhzIT64MeY0ZzE2A
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/albums/4beTtJKeg3ITJsiVuxkiV0/tracks
+    name: Récup les 5 Track de Damso
+    meta:
+      id: req_fdaec2b2835c4ba29579476e17e22f06
+      created: 1763629266761
+      modified: 1763635343436
+      isPrivate: false
+      description: ""
+      sortKey: -1763627431981
+    method: GET
+    parameters:
+      - id: pair_87834e5efc1f4940b95056a7b0b6c29f
+        name: limit
+        value: "5"
+        description: ""
+        disabled: false
+      - id: pair_4ca4bc65b56c41d3897376e1d0a8d1e6
+        name: offset
+        value: "5"
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_daf9e54fd73e4ee4b109330e5e37b008
+      - id: pair_fec6bd70ffba4ffd87d727713d7218dc
+        name: Authorization
+        value: ""
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/tracks/6nkFbmDY84a9rejFSbIMdj
+    name: Récup la track "Impardonnable" de Damso
+    meta:
+      id: req_7ba9c99d1fe54dcd8c2520e978fe9fb2
+      created: 1763630521664
+      modified: 1763631097183
+      isPrivate: false
+      description: ""
+      sortKey: -1763627431881
+    method: GET
+    parameters:
+      - id: pair_7e5be8c8054a419f90b5544713c4dcde
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_3b1d140571674d38aa810218e9bad2b6
+      - id: pair_4c708709df454f8ca7d3b52cfea41fd2
+        name: Authorization
+        value: Bearer
+          BQDG4X7N8sO-sA37KjyH5zy-nB5DxfBdQ5tKTvsfYAJ2Wv8gvYLN_Ge3VnmtHea0e0yP8R1JZp50sTxfLEd58paWaktG5KG_TLBu_iwJN2IxBeZRkw0mg_w7Oho39S2EUq4iy0O9m9A
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/artists/0LnhY2fzptb0QEs5Q5gM7S/top-tracks
+    name: Récup les track les plus populaire de Laylow
+    meta:
+      id: req_44c872e64f804a22ba88c4ff8b08e3f9
+      created: 1763631222550
+      modified: 1763631489838
+      isPrivate: false
+      description: ""
+      sortKey: -1763627431781
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_b8c679ac62684beaaec9e48ae48f0f2f
+      - id: pair_2a0f18a0dacc4dc6b421418db841cace
+        name: Authorization
+        value: Bearer
+          BQDG4X7N8sO-sA37KjyH5zy-nB5DxfBdQ5tKTvsfYAJ2Wv8gvYLN_Ge3VnmtHea0e0yP8R1JZp50sTxfLEd58paWaktG5KG_TLBu_iwJN2IxBeZRkw0mg_w7Oho39S2EUq4iy0O9m9A
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/tracks/67Pf31pl0PfjBfUmvYNDCL
+    name: Récuperer la track "Maladresse" de Laylow
+    meta:
+      id: req_e5cd0ed578b1413aae4292968709ba3f
+      created: 1763631554225
+      modified: 1763634078567
+      isPrivate: false
+      description: ""
+      sortKey: -1763627431681
+    method: GET
+    parameters:
+      - id: pair_c278231d131842399decf95549d26af0
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_ec2fe2fef45146db804bd899170cf27b
+      - id: pair_87ded0f6759941d79b1f3d67deac05ae
+        name: Authorization
+        value: Bearerpair_87ded0f6759941d79b1f3d67deac05ae
+          BQBXXA1LUuJgTuAO8Zke9Yjolz6Wyk69TwVyq22ewk-Fn25sT-IKCp2m6jDsmw276h3LAzhc2kDX47SsUdSZu5Lvy_c1zgX2vnnSPBJKQyekvk2EdD1FlH8MNWGtS0i6zS6R0DhPcbU
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/shows/6y1PloEyNsCNJH9vHias4T
+    name: Récuperer le podcast de Les actus du jour - Hugo décrypte
+    meta:
+      id: req_8b5d5f3e29fe4cdaa2fa7ddf27ed1ead
+      created: 1763633643648
+      modified: 1763634259469
+      isPrivate: false
+      description: ""
+      sortKey: -1763627431581
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_84dcbac7d7bc4a8e90515cfc14e1f0c3
+      - id: pair_08860d3055bb492eaa0e091ab5bde4d2
+        name: Authorization
+        value: Bearer
+          BQCiK9kA5xgt6RXIzBVqMB0y0PvEIUUhvZoc9PumQ-p2ZGtIWxvEmi1UWhhnq2SzjpeT0CUo0OHRShg6nZKwZkfQphHaZn9731VUzjQsh70JJtsxoPt3S_JKdm1avaLCW8j9Ytmp3eo
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/shows/6y1PloEyNsCNJH9vHias4T/episodes
+    name: "Récuperer les 3 dernier épisode du podcast précedent "
+    meta:
+      id: req_b8eea6c5904f454fa8e506c8e006dc9e
+      created: 1763634262086
+      modified: 1763634611193
+      isPrivate: false
+      description: ""
+      sortKey: -1763627431481
+    method: GET
+    parameters:
+      - id: pair_87c89b8104ee4da28f878a67a22a627c
+        name: limit
+        value: "3"
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_aabe2c699a8d457c93c2a7b3f561c927
+      - id: pair_c4bdf46d716f4d6a84f57c70066f360e
+        name: Authorization
+        value: Bearer
+          BQCiK9kA5xgt6RXIzBVqMB0y0PvEIUUhvZoc9PumQ-p2ZGtIWxvEmi1UWhhnq2SzjpeT0CUo0OHRShg6nZKwZkfQphHaZn9731VUzjQsh70JJtsxoPt3S_JKdm1avaLCW8j9Ytmp3eo
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.spotify.com/v1/shows/6y1PloEyNsCNJH9vHias4T/episodes
+    name: Récuperer le 2eme épisode du podcast
+    meta:
+      id: req_52da91298e9844299b0e30ca4be1aa89
+      created: 1763634612729
+      modified: 1763635327037
+      isPrivate: false
+      description: ""
+      sortKey: -1763627431381
+    method: GET
+    parameters:
+      - id: pair_36745fba434e48e7bfc7131428f89072
+        name: offset
+        value: "1"
+        description: ""
+        disabled: false
+      - id: pair_69d5cea4607f475680a19ff2f5dfdf39
+        name: limit
+        value: "1"
+        description: ""
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/12.0.0
+        id: pair_a3dc3652459048638ce5f29b1d3581c9
+      - id: pair_e4ab74c64fc745509774fcca51c5ca29
+        name: Authorization
+        value: Bearer
+          BQDLZhZh-JMQngc0aFdLd2UZVb-A25_XNUk2Zj8pxTNaaHzC9EawQWIwRHqQA8YysLTny8uqxs67v4CHaREfZKstnn2YrGUs8SPra-_1jEkR5tRt6qq_eGTiw1aFrc_5ME9a9O_qPOg
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_4c6c1c03cd61d84f80d3d0332ef851cbb4360576
+    created: 1763626486985
+    modified: 1763628095492
+  cookies:
+    - key: __Host-device_id
+      value: AQAxss36VNi-zTt9MfCih0ODpQdy7gXp0RlV2OHQ9m3b2mIQ_JKFXkd_bv5Vc0cNOQq7CIlgYH99kH2j-kh2PIEPUfVtew6ufkE
+      maxAge: 2147483647
+      domain: accounts.spotify.com
+      path: /
+      secure: true
+      httpOnly: true
+      extensions:
+        - Version=1
+      hostOnly: true
+      creation: 2025-11-20T08:16:14.951Z
+      lastAccessed: 2025-11-20T08:16:14.951Z
+      sameSite: lax
+      id: cbfcf69c-66f4-421b-8129-71f6df801a9a
+    - key: sp_tr
+      value: "false"
+      domain: accounts.spotify.com
+      path: /
+      secure: true
+      extensions:
+        - Version=1
+      hostOnly: false
+      creation: 2025-11-20T08:16:14.955Z
+      lastAccessed: 2025-11-20T08:16:14.955Z
+      sameSite: lax
+      id: e37542c9-6900-4d90-a7e9-3439a5cf163d
+    - key: __Host-sp_csrf_sid
+      value: ac5e88a760e5198dd970a922bf1b9ed444214bd3fb529c565a92524692520100
+      maxAge: 3600
+      domain: accounts.spotify.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-11-20T08:29:28.133Z
+      lastAccessed: 2025-11-20T08:41:35.492Z
+      sameSite: lax
+      id: ff221c27-2f52-4458-a125-69de1c8db39f
+environments:
+  name: Base Environment
+  meta:
+    id: env_4c6c1c03cd61d84f80d3d0332ef851cbb4360576
+    created: 1763626486977
+    modified: 1763626486977
+    isPrivate: false
