@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style_laylow.css">
+    <title>Maladresse - Laylow</title>
+</head>
+<body>
+    <h1>{{.Name}}</h1>
+    <img src="{{index .Album.Images 0).URL}}" alt="Couverture">
+    <p>Album : {{.Album.Name}}</p>
+    <p>Artistes : {{range .Artists}}{{.Name}} {{end}}</p>
+    <p>Date de sortie : {{.Album.ReleaseDate}}</p>
+    <a href="{{.ExternalURLs.Spotify}}" target="_blank">Écouter sur Spotify</a>
+</body>
+</html>

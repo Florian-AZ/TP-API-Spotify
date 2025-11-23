@@ -1,73 +1,59 @@
 package controller
 
 import (
-	"encoding/json"
+	//"ApiSpotify/fonction"
+	//"ApiSpotify/structure"
 	"fmt"
-	"io"
+	"html/template"
 	"net/http"
-	"time"
 )
 
-type ApiData struct {
-	AccessToken string `json:"access_token"`
-	TokenType   string `json:"token_type"`
+var clientID = "<4ba3c025599744ef9bc882e88bf3b5cc>"
+var clientSecret = "<6ad26881c3bb4a01a83da348a3714030>"
+
+// Page d'accueil
+func Home(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles("./template/index.html"))
+
+	data := map[string]string{
+		"DamsoURL":  "/album/damso",
+		"LaylowURL": "/track/laylow",
+	}
+	tmpl.Execute(w, data)
 }
 
-func Refreshtoken() {
-
-	// URL de L'API
-	urlApi := "https://accounts.spotify.com/api/token"
-
-	// Initialisation du client HTTP qui va émettre/demander les requêtes
-	httpClient := http.Client{
-		Timeout: time.Second * 2, // Timeout apres 2sec
-	}
-
-	// Création de la requête HTTP vers L'API avec initialisation de la methode HTTP, la route et le corps de la requête
-	req, errReq := http.NewRequest(http.MethodPost, urlApi, nil)
-	if errReq != nil {
-		fmt.Println("Oupss, une erreur est survenue : ", errReq.Error())
-	}
-
-	// Ajout d'une métadonnée dans le header, User_Agent permet d'identifier l'application, système ....
-	req.Header.Add("Content-Type", "application/x-www-form-urlencodedpair_29b80f29b47b4ff286b64740d5f48bbf")
-
-	// Execution de la requête HTTP vars L'API
-	res, errResp := httpClient.Do(req)
-	if errResp != nil {
-		fmt.Println("Oupss, une erreur est survenue : ", errResp.Error())
+// Page albums Damso
+func AlbumDamso(w http.ResponseWriter, r *http.Request) {
+	token, err := GetAccessToken(clientID, clientSecret)
+	if err != nil {
+		fmt.Fprintln(w, "Erreur token :", err)
 		return
 	}
 
-	if res.Body != nil {
-		defer res.Body.Close()
+	albums, err := GetAlbums(token, "0eKTWbC8N7IV9lEdhT4sq2")
+	if err != nil {
+		fmt.Fprintln(w, "Erreur albums :", err)
+		return
 	}
 
-	// Lecture et récupération du corps de la requête HTTP
-	body, errBody := io.ReadAll(res.Body)
-	if errBody != nil {
-		fmt.Println("Oupss, une erreur est survenue : ", errBody.Error())
+	tmpl := template.Must(template.ParseFiles("./template/damso.html"))
+	tmpl.Execute(w, albums) // albums est une slice d'Album
+}
+
+// Page track Maladresse Laylow
+func TrackMaladresse(w http.ResponseWriter, r *http.Request) {
+	token, err := GetAccessToken(clientID, clientSecret)
+	if err != nil {
+		fmt.Fprintln(w, "Erreur token :", err)
+		return
 	}
 
-	// Déclaration de la variable qui va contenir les données
-	var decodeData ApiData
+	track, err := GetTrackInfo(token, "<ID_TRACK_MALADRESSE>")
+	if err != nil {
+		fmt.Fprintln(w, "Erreur track :", err)
+		return
+	}
 
-	// Decodage des données en format JSON et ajout des donnée à la variable: decodeData
-	json.Unmarshal(body, &decodeData)
-
-	// Affichage des données
-	fmt.Println(decodeData)
-}
-
-// Home handler simple
-func Home(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./template/index.html")
-}
-
-func Damso(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./template/damso.html")
-}
-
-func Laylow(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./template/laylow.html")
+	tmpl := template.Must(template.ParseFiles("./template/laylow.html"))
+	tmpl.Execute(w, track)
 }
