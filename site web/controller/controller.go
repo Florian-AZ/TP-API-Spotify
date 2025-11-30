@@ -1,59 +1,57 @@
 package controller
 
 import (
-	//"ApiSpotify/fonction"
-	//"ApiSpotify/structure"
+	"ApiSpotify/fonction"
+	"ApiSpotify/structure"
 	"fmt"
 	"html/template"
 	"net/http"
 )
 
-var clientID = "<4ba3c025599744ef9bc882e88bf3b5cc>"
-var clientSecret = "<6ad26881c3bb4a01a83da348a3714030>"
+var Token *string
 
 // Page d'accueil
 func Home(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("./template/index.html"))
-
-	data := map[string]string{
-		"DamsoURL":  "/album/damso",
-		"LaylowURL": "/track/laylow",
-	}
-	tmpl.Execute(w, data)
+	Token = fonction.GetAccessToken()
+	fmt.Println("Access Token:", *Token)
 }
 
 // Page albums Damso
 func AlbumDamso(w http.ResponseWriter, r *http.Request) {
-	token, err := GetAccessToken(clientID, clientSecret)
-	if err != nil {
-		fmt.Fprintln(w, "Erreur token :", err)
-		return
+	Token = fonction.GetAccessToken()
+	albums := fonction.GetAlbums(*Token, "4tZwfgrHOc3mvqYlEYSvVi")
+	if r.Method == http.MethodPost {
+		for _, i := range A.albumsItems {
+			data := structure.data{
+				Name:        albums[0].Artists[0].Name,
+				ReleaseDate: albums[0].ReleaseDate,
+				TotalTracks: len(albums),
+				Items:       []albums,
+			}
+			AHTML.Data = append(AHTML.Data, data)
+		}
+	data := PageData{
+		Name:        albums[0].Artists[0].Name,
+		ReleaseDate: albums[0].ReleaseDate,
+		TotalTracks: len(albums),
+		Items:       albums,
 	}
-
-	albums, err := GetAlbums(token, "0eKTWbC8N7IV9lEdhT4sq2")
-	if err != nil {
-		fmt.Fprintln(w, "Erreur albums :", err)
-		return
-	}
-
 	tmpl := template.Must(template.ParseFiles("./template/damso.html"))
-	tmpl.Execute(w, albums) // albums est une slice d'Album
+	tmpl.Execute(w, data) // albums est une slice d'Album
 }
 
 // Page track Maladresse Laylow
 func TrackMaladresse(w http.ResponseWriter, r *http.Request) {
-	token, err := GetAccessToken(clientID, clientSecret)
-	if err != nil {
-		fmt.Fprintln(w, "Erreur token :", err)
-		return
+	Token = fonction.GetAccessToken()
+	track := fonction.GetTracks(*Token, "67Pf31pl0PfjBfUmvYNDCL")
+	if r.Method == http.MethodPost {
+		data := structure.LaylowData{
+			Name:         track.Name,
+			Artist:       track.Artists[0].Name,
+			Album:        track.Album.Name,
+			Release_Date: track.Album.Release_Date,
+		}
+		tmpl := template.Must(template.ParseFiles("./template/laylow.html"))
+		tmpl.Execute(w, data)
 	}
-
-	track, err := GetTrackInfo(token, "<ID_TRACK_MALADRESSE>")
-	if err != nil {
-		fmt.Fprintln(w, "Erreur track :", err)
-		return
-	}
-
-	tmpl := template.Must(template.ParseFiles("./template/laylow.html"))
-	tmpl.Execute(w, track)
 }
